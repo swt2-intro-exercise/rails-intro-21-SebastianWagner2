@@ -9,5 +9,22 @@ require 'rails_helper'
      expect(page).to have_field('author[last_name]')
      expect(page).to have_field('author[homepage]')
    end
+
+   it "should create a new author in the database upon submission" do
+    visit new_author_path
+
+    page.fill_in 'author[first_name]', with: 'Alan'
+    page.fill_in 'author[last_name]', with: 'Turing'
+    page.fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+
+    find('input[type="submit"]').click
+
+    @author = Author.first
+
+    expect(Author.count).to eq(1)
+    expect(@author.first_name).to eq("Alan")
+    expect(@author.last_name).to eq("Turing")
+    expect(@author.homepage).to eq("http://wikipedia.org/Alan_Turing")
+  end
  end
  
