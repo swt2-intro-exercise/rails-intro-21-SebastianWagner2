@@ -4,6 +4,6 @@ require 'rails_helper'
    it "should exist at 'new_author_path' and render withour error" do
      # https://guides.rubyonrails.org/routing.html#path-and-url-helpers
      visit new_author_path
-   ends
+   end
  end
  
