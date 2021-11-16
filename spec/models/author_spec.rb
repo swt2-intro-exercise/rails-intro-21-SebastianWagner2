@@ -18,4 +18,9 @@ RSpec.describe Author, type: :model do
   it "gerenates the correct full name" do
     expect(@author.name).to eq("Basti Wagner")
   end
+
+  it "cannot exist without a last name" do
+    @author.last_name = ""
+    expect(@author).to_not be_valid
+  end
 end
