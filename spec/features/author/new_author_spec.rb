@@ -26,5 +26,13 @@ require 'rails_helper'
     expect(@author.last_name).to eq("Turing")
     expect(@author.homepage).to eq("http://wikipedia.org/Alan_Turing")
   end
- end
+
+  it "should notify the user of errors when author could not be saved" do
+    visit new_author_path
+
+    find('input[type="submit"]').click
+
+    expect(page).to have_text('error')
+  end    
+end
  
