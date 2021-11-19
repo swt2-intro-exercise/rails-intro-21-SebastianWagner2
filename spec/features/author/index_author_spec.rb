@@ -36,7 +36,7 @@ describe "Index author page", type: :feature do
     
     visit authors_path
 
-    page.find('a', text: 'Delete').click
+    page.find('a', text: 'Destroy').click
 
     expect(Author.count).to be(author_count - 1)
   end
