@@ -28,5 +28,18 @@ describe "Index author page", type: :feature do
     expect(page).to have_link 'New', href: new_author_path
   end
 
+  it "should delete authors when pressing the dedicated button" do
+    @alan = FactoryBot.create :author
+    @alan.save
+
+    author_count = Author.count
+    
+    visit authors_path
+
+    page.find('a', text: 'Delete').click
+
+    expect(Author.count).to be(author_count - 1)
+  end
+
 end
  
