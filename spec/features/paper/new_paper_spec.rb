@@ -26,12 +26,12 @@ require 'rails_helper'
     expect(@paper.year).to eq(1950)
   end
 
-  #it "should notify the user of errors when author could not be saved" do
-  #  visit new_paper_path
-  #
-  #  find('input[type="submit"]').click
-  #
-  #  expect(page).to have_text('error')
-  #end    
+  it "should notify the user of errors when author could not be saved" do
+    visit new_paper_path
+  
+    find('input[type="submit"]').click
+  
+    expect(page).to have_text('error')
+  end
 end
  
