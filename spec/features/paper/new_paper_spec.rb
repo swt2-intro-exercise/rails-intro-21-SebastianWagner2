@@ -29,7 +29,7 @@ require 'rails_helper'
   it "should notify the user of errors when author could not be saved" do
     visit new_paper_path
   
-    find('input[type="submit"]').click
+    find('input[type="submit"]').click 
   
     expect(page).to have_text('error')
   end
