@@ -15,8 +15,20 @@ RSpec.describe Paper, type: :model do
     expect(@paper.year).to eq(1950)
   end
 
-  #it "cannot exist without a last name" do
-  #  @author.last_name = ""
-  #  expect(@author).to_not be_valid
-  #end
+  it "cannot exist without one of the attributes" do
+    @paper.title = ""
+    expect(@paper).to_not be_valid
+    @paper.title = "Something valid"
+    expect(@paper).to be_valid
+
+    @paper.venue = ""
+    expect(@paper).not_to be_valid
+    @paper.venue = "Something else that is valid"
+    expect(@paper).to be_valid
+
+    @paper.year = "hellyeah"
+    expect(@paper).to_not be_valid
+    @paper.year = 2000
+    expect(@paper).to be_valid
+  end
 end
