@@ -1,19 +1,5 @@
 <h1>Editing Paper</h1>
 
-<% if @paper.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@paper.errors.count, "error") %> prohibited
-      this paper from being saved:
-    </h2>
-    <ul>
-      <% @paper.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <%= render 'form', paper: @paper %>
 
 <%= link_to 'Show', @paper %> |
