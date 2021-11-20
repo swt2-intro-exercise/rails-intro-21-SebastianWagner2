@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @paper.title %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @paper.venue %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @paper.year %>
+</p>
+
+<p>
+  <% if @paper.authors.any? %>
+    <div id="authors">
+      <h2>
+        <%= pluralize(@paper.authors.count, "Author") %>:
+      </h2>
+      <ul>
+        <% @paper.authors.each do |author| %>
+          <li><%= author.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_paper_path(@paper) %> |
+<%= link_to 'Back', papers_path %>
