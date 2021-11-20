@@ -27,7 +27,7 @@ describe "Edit paper page", type: :feature do
     expect(@paper.title).to eq('Example')
     expect(@paper.venue).to eq('example')
     expect(@paper.year).to eq(1950)
-end
+  end
 
   it "should notify the user of errors when paper could not be saved" do
     visit edit_paper_path(@paper)
@@ -37,5 +37,13 @@ end
     find('input[type="submit"]').click
 
     expect(page).to have_text('error')
+  end
+
+  it "should have a multiple select element for choosing the authors of the paper" do
+    @alan = FactoryBot.create :author
+    
+    visit edit_paper_path(@paper)
+
+    expect(page).to have_select('authors')
   end
 end
